@@ -2,6 +2,10 @@ import { createRouter, createWebHistory } from "vue-router"
 import Schedule from "@/components/client/Schedule"
 import ScheduleMaking from "@/components/admin/ScheduleMaking"
 import ScheduleList from "@/components/admin/ScheduleList"
+import Teachers from "@/components/admin/Teachers"
+import Locations from "@/components/admin/Locations"
+import Rooms from "@/components/admin/Rooms"
+import Overlays from "@/components/admin/Overlays"
 
 const routes = [
   {
@@ -11,25 +15,54 @@ const routes = [
   },
   {
     path: "/client/schedule",
-    name: "schedule",
+    name: "clientSchedule",
     component: Schedule,
     meta: { requiresAuth: false },
   },
   {
     path: "/admin",
-    name: "adminScheduleMaking",
-    redirect: "/admin/schedule/making",
+    name: "admin",
+    redirect: "/admin/schedule/list",
+  },
+  {
+    path: "/admin/schedule",
+    name: "adminSchedule",
+    redirect: "/admin/schedule/list",
   },
   {
     path: "/admin/schedule/list",
-    name: "scheduleList",
+    name: "adminScheduleList",
     component: ScheduleList,
     meta: { requiresAuth: false },
   },
   {
+    path: "/admin/schedule/locations",
+    name: "adminLocationList",
+    component: Locations,
+    meta: { requiresAuth: false },
+  },
+  {
+    path: "/admin/schedule/rooms",
+    name: "adminRoomsList",
+    component: Rooms,
+    meta: { requiresAuth: false },
+  },
+  {
+    path: "/admin/schedule/teachers",
+    name: "adminTeachersList",
+    component: Teachers,
+    meta: { requiresAuth: false },
+  },
+  {
     path: "/admin/schedule/making/:groupId",
-    name: "scheduleMaking",
+    name: "adminScheduleMaking",
     component: ScheduleMaking,
+    meta: { requiresAuth: false },
+  },
+  {
+    path: "/admin/schedule/overlays",
+    name: "adminScheduleOverlays",
+    component: Overlays,
     meta: { requiresAuth: false },
   },
 ]

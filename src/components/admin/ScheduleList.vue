@@ -1,6 +1,8 @@
 <template>
+  <AdminNav />
+  <div class="my-3"></div>
   <div class="container">
-    <h1>ScheduleList</h1>
+    <h1>Список расписаний</h1>
     <div v-if="isLoading"></div>
     <div v-else>
       <ul class="list-group" v-for="unit in groupUnits">
@@ -26,10 +28,11 @@
 
 <script>
 import { groupUnitApi } from "@/api/admin/groupUnitAPI"
+import AdminNav from "@/components/admin/AdminNav"
 
 export default {
   name: "ScheduleList",
-  components: {},
+  components: { AdminNav },
   data() {
     return {
       isLoading: true,
@@ -50,7 +53,7 @@ export default {
   methods: {
     changeRoute(groupId) {
       let route = this.$router.resolve({
-        name: "scheduleMaking",
+        name: "adminScheduleMaking",
         params: { groupId: groupId },
       })
       window.open(route.href, "_blank")
