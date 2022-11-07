@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router"
 import Schedule from "@/components/client/Schedule"
+import ScheduleMaking from "@/components/admin/ScheduleMaking"
+import ScheduleList from "@/components/admin/ScheduleList"
 
 const routes = [
   {
@@ -11,6 +13,23 @@ const routes = [
     path: "/client/schedule",
     name: "schedule",
     component: Schedule,
+    meta: { requiresAuth: false },
+  },
+  {
+    path: "/admin",
+    name: "adminScheduleMaking",
+    redirect: "/admin/schedule/making",
+  },
+  {
+    path: "/admin/schedule/list",
+    name: "scheduleList",
+    component: ScheduleList,
+    meta: { requiresAuth: false },
+  },
+  {
+    path: "/admin/schedule/making/:groupId",
+    name: "scheduleMaking",
+    component: ScheduleMaking,
     meta: { requiresAuth: false },
   },
 ]
